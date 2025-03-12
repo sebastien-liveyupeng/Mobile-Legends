@@ -24,6 +24,8 @@
             list-style: none;
             display: flex;
             gap: 20px;
+            padding: 0;
+            margin: 0;
         }
         nav a {
             color: #fff;
@@ -35,13 +37,25 @@
             background: linear-gradient(to right, #001f3f, #00509e);
         }
         .team-definition {
-    margin: 40px 0;
-    padding: 20px;
-    background-color: #1e2a47;
-    border-radius: 10px;
-    text-align: center;
-}
-
+            margin: 40px 0;
+            padding: 20px;
+            background-color: #1e2a47;
+            border-radius: 10px;
+            text-align: center;
+        }
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                align-items: center;
+            }
+            nav ul {
+                flex-direction: column;
+                text-align: center;
+            }
+            .hero {
+                padding: 30px;
+            }
+        }
     </style>
 </head>
 
@@ -54,7 +68,7 @@
                 <li><a href="equipe.html">Équipe</a></li>
                 <li><a href="giveaway.html">Giveaways</a></li>
                 <li><a href="contact.html">Contact</a></li>
-                <li><a href="resultat.html">Resultat giveaway</a></li>
+                <li><a href="resultat.html">Résultat giveaway</a></li>
             </ul>
         </nav>
     </header>
@@ -68,9 +82,7 @@
         <h2>Définition de l'Équipe</h2>
         <p>CRUSIX est bien plus qu'une simple équipe, c'est une communauté de joueurs passionnés par Mobile Legends: Bang Bang. 
            Nous nous engageons à repousser nos limites, à évoluer ensemble et à viser l'excellence dans chaque partie. 
-           Notre équipe repose sur la synergie, la stratégie et un esprit de compétition inébranlable. C'est une team avec des joueurs venant du monde entier comme des membres venant de Madagascar , Philippine , France et bien plus encore si tu nous rejoins !!</p>
+           Notre équipe repose sur la synergie, la stratégie et un esprit de compétition inébranlable. C'est une team avec des joueurs venant du monde entier comme des membres venant de Madagascar, Philippines, France et bien plus encore si tu nous rejoins !!</p>
     </section>
-    
-    
 </body>
 </html>

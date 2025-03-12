@@ -22,10 +22,15 @@
             padding: 15px 0;
             text-align: center;
         }
+        nav {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
         nav a {
             color: white;
             text-decoration: none;
-            margin: 0 15px;
             font-size: 18px;
             transition: color 0.3s;
         }
@@ -34,8 +39,8 @@
         }
         main {
             text-align: center;
-            padding: 50px;
-            max-width: 600px;
+            padding: 20px;
+            max-width: 800px;
             width: 100%;
         }
         button a {
@@ -50,6 +55,7 @@
             border-radius: 5px;
             cursor: pointer;
             transition: background 0.3s ease;
+            margin-top: 10px;
         }
         button:hover {
             background-color: #003f7f;
@@ -60,6 +66,8 @@
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
             text-align: left;
+            width: 100%;
+            max-width: 600px;
         }
         h2 {
             text-align: center;
@@ -79,6 +87,31 @@
         textarea {
             height: 100px;
         }
+        @media (max-width: 600px) {
+            nav {
+                flex-direction: column;
+                align-items: center;
+            }
+            .contact-form {
+                padding: 15px;
+            }
+            button {
+                width: 100%;
+            }
+        }
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                align-items: center;
+            }
+            nav ul {
+                flex-direction: column;
+                text-align: center;
+            }
+            .hero {
+                padding: 30px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -86,7 +119,9 @@
         <nav>
             <a href="index.html">Accueil</a>
             <a href="equipe.html">Équipe</a>
-            <a href="giveaway.html">Giveaways</a>
+            <a href="giveaway.html">Giveaways Inscription</a>
+        
+            <a href="resultat.html">Resultat GiveAway</a>
             <a href="contact.html">Contact</a>
         </nav>
     </header>

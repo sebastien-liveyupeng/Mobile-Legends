@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact</title>
+    <link rel="stylesheet" href="contact.css">
+    <style>
+    </style>
+</head>
+<body>
+   
+    <main>
+        <button><a href="index.html">Retour</a></button>
+        <section class="contact-form">
+            <h2>Formulaire de Contact</h2>
+            <form action="https://formspree.io/f/xkgnqgzn" method="POST">
+                <label>
+                   Votre email:
+                    <input type="email" name="email" required>
+                </label>
+                <label>
+                     Message:
+                    <textarea name="message"></textarea>
+                </label>
+                <label for="city">Ville :</label>
+                <input type="text" id="city" name="city"><br>
+                <label for="region">Région :</label>
+                <input type="text" id="region" name="region"><br>
+                <label for="country">Pays :</label>
+                <input type="text" id="country" name="country"><br>
+                <button type="button" onclick="getLocation()">Utiliser ma position</button>
+                <button type="submit">Send</button>
+            </form>
+        </section>
+    </main>
+    <script src="contact.js"></script>
+</body>
+</html>

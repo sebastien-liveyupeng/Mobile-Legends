@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GiveAway</title>
+    <link rel="stylesheet" href="giveaway.css">
+    <style>
+        body {
+            background-color: #0a0f1e;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        header {
+            width: 100%;
+            background-color: #121a2f;
+            padding: 15px 0;
+            text-align: center;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 18px;
+            transition: color 0.3s;
+        }
+        nav a:hover {
+            color: #00509e;
+        }
+        main {
+            text-align: center;
+            padding: 50px;
+            max-width: 600px;
+            width: 100%;
+        }
+        button a {
+            text-decoration: none;
+            color: white;
+        }
+        button {
+            background-color: #00509e;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        button:hover {
+            background-color: #003f7f;
+        }
+        .contact-form {
+            background-color: #121a2f;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+            text-align: left;
+        }
+        h2 {
+            text-align: center;
+        }
+        label, input, textarea {
+            display: block;
+            width: 100%;
+            margin-top: 10px;
+        }
+        input, textarea {
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #1e2a47;
+            color: white;
+        }
+        textarea {
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html">Accueil</a>
+            <a href="equipe.html">Équipe</a>
+            <a href="giveaway.html">Giveaways</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+    <main>
+        <button><a href="index.html">Retour</a></button>
+        <section class="contact-form">
+            <h2>GiveAway inscription</h2>
+            <form action="https://formspree.io/f/xkgnqgzn" method="POST">
+                <label>Votre email:
+                    <input type="email" name="email" required>
+                </label>
+                <label>Message:
+                    <textarea name="message"></textarea>
+                </label>
+                <label for="city">Ville :</label>
+                <input type="text" id="city" name="city">
+                <label for="region">Région :</label>
+                <input type="text" id="region" name="region">
+                <label for="country">Pays :</label>
+                <input type="text" id="country" name="country">
+                <button type="button" onclick="getLocation()">Utiliser ma position</button>
+                <button type="submit">Envoyer</button>
+            </form>
+        </section>
+    </main>
+    <script src="contact.js"></script>
+</body>
+</html>

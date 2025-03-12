@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUSIX - Accueil</title>
+   
+    <style>
+        body {
+            background-color: #0a0f1e;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: #121a2f;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        nav a:hover {
+            background-color: #00509e;
+            transform: scale(1.1);
+        }
+        .hero {
+            text-align: center;
+            padding: 50px;
+            background: linear-gradient(to right, #001f3f, #00509e);
+        }
+        .team {
+            text-align: center;
+            padding: 50px;
+        }
+        .team-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .player-card {
+    background-color: #121a2f;
+    padding: 30px; /* Augmente l'espace intérieur */
+    border-radius: 10px;
+    text-align: center;
+    width: 300px; /* Augmente la largeur */
+}
+
+.player-card img {
+    width: 300px; /* Augmente la taille de l'image */
+    height: 200px;
+    border-radius: 50%;
+}
+
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>CRUSIX</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="equipe.html">Équipe</a></li>
+                <li><a href="giveaway.html">Giveaways</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <section class="hero">
+        <h2>Bienvenue sur CRUSIX</h2>
+        <p>La team Mobile Legends: Bang Bang ultime !</p>
+    </section>
+
+    <section id="equipe" class="team">
+        <h2>Notre Équipe</h2>
+        <div class="team-container">
+            <div class="player-card">
+                <img src="img/Akane.jpg" alt="Joueur 1">
+                <h3>Akane</h3>
+                <p>Membre</p>
+            </div>
+            <div class="player-card">
+                <img src="img/Jard.jpg" alt="Joueur 2">
+                <h3>Jard</h3>
+                <p>Membre</p>
+            </div>
+            <div class="player-card">
+                <img src="img/l1lium.jpg" alt="Joueur 3">
+                <h3>l1lium</h3>
+                <p>Membre</p>
+            </div>
+            <div class="player-card">
+                <img src="img/moi.gif" alt="Joueur 3">
+                <h3>Azra</h3>
+                <p>Leader</p>
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>

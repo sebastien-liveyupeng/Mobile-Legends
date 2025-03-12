@@ -1,0 +1,129 @@
+/* contact.css */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #0a0f1e;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    flex-direction: column;
+    padding: 20px;
+    color: white;
+}
+
+
+.contact-form {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    max-width: 450px;
+    margin-top: 20px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+
+.contact-form h2 {
+    color: white;
+    font-size: 26px;
+    margin-bottom: 20px;
+}
+
+
+.contact-form label {
+    display: block;
+    margin-top: 15px;
+    font-weight: 600;
+    text-align: left;
+    color: #f1f1f1;
+}
+
+
+.contact-form input[type="email"],
+.contact-form input[type="text"],
+.contact-form textarea {
+    width: 100%;
+    padding: 12px;
+    margin-top: 5px;
+    border-radius: 8px;
+    border: 2px solid transparent;
+    font-size: 16px;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    transition: 0.3s;
+    outline: none;
+}
+
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    background: linear-gradient(to right, #001f3f, #00509e);
+    background: rgba(255, 255, 255, 0.3);
+}
+
+
+button {
+    padding: 12px;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    border: none;
+    transition: 0.3s;
+    width: 100%;
+    margin-top: 20px;
+    text-transform: uppercase;
+}
+
+
+button[type="submit"] {
+    background: linear-gradient(to right, #001f3f, #00509e);
+    color: white;
+}
+
+button[type="submit"]:hover {
+    background: linear-gradient(to right, #001f3f, #00509e);
+    transform: scale(1.05);
+}
+
+
+
+
+
+.privacy-policy {
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    color: #ddd;
+}
+
+.privacy-policy input[type="checkbox"] {
+    margin-right: 10px;
+    accent-color: #ff4500;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .contact-form {
+        width: 90%;
+        padding: 20px;
+    }
+
+    .contact-form h2 {
+        font-size: 22px;
+    }
+
+    button {
+        font-size: 16px;
+    }
+}

@@ -6,34 +6,137 @@
     <title>Contact</title>
     <link rel="stylesheet" href="contact.css">
     <style>
+        body {
+            background-color: #0a0f1e;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        main {
+            padding: 50px 20px;
+        }
+
+        button {
+            background-color: #00509e;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 10px;
+            transition: background 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #003f7f;
+        }
+
+        button a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .contact-form {
+            background-color: #1e2a47;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 400px;
+            margin: auto;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .contact-form {
+                width: 90%;
+            }
+        }
     </style>
 </head>
 <body>
-   
+
+    <header>
+        <button><a href="index.html">🏠 <span class="lang" data-fr="Retour" data-en="Back">Retour</span></a></button>
+        <button class="translate-btn" onclick="toggleLanguage()">🇫🇷 / 🇬🇧</button>
+    </header>
+
     <main>
-        <button><a href="index.html">Retour</a></button>
         <section class="contact-form">
-            <h2>Formulaire de Contact</h2>
+            <h2 class="lang" data-fr="Formulaire de Contact" data-en="Contact Form">Formulaire de Contact</h2>
             <form action="https://formspree.io/f/xkgnqgzn" method="POST">
-                <label>
-                   Votre email:
-                    <input type="email" name="email" required>
-                </label>
-                <label>
-                     Message:
-                    <textarea name="message"></textarea>
-                </label>
-                <label for="city">Ville :</label>
-                <input type="text" id="city" name="city"><br>
-                <label for="region">Région :</label>
-                <input type="text" id="region" name="region"><br>
-                <label for="country">Pays :</label>
-                <input type="text" id="country" name="country"><br>
-                <button type="button" onclick="getLocation()">Utiliser ma position</button>
-                <button type="submit">Send</button>
+                <label class="lang" data-fr="Votre email :" data-en="Your email:">Votre email :</label>
+                <input type="email" name="email" required>
+
+                <label class="lang" data-fr="Message :" data-en="Message:">Message :</label>
+                <textarea name="message"></textarea>
+
+                <label for="city" class="lang" data-fr="Ville :" data-en="City:">Ville :</label>
+                <input type="text" id="city" name="city">
+
+                <label for="region" class="lang" data-fr="Région :" data-en="Region:">Région :</label>
+                <input type="text" id="region" name="region">
+
+                <label for="country" class="lang" data-fr="Pays :" data-en="Country:">Pays :</label>
+                <input type="text" id="country" name="country">
+
+                <button type="button" onclick="getLocation()">📍 <span class="lang" data-fr="Utiliser ma position" data-en="Use my location">Utiliser ma position</span></button>
+                <button type="submit">📨 <span class="lang" data-fr="Envoyer" data-en="Send">Envoyer</span></button>
             </form>
         </section>
     </main>
-    <script src="contact.js"></script>
+
+    <script>
+        function toggleLanguage() {
+            let currentLang = localStorage.getItem('lang') || 'fr';
+            let newLang = currentLang === 'fr' ? 'en' : 'fr';
+            localStorage.setItem('lang', newLang);
+            translatePage(newLang);
+        }
+
+        function translatePage(lang) {
+            document.querySelectorAll('.lang').forEach(element => {
+                element.textContent = element.getAttribute(`data-${lang}`);
+            });
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            let savedLang = localStorage.getItem('lang') || 'fr';
+            translatePage(savedLang);
+        });
+
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition, showError);
+            } else {
+                alert("La géolocalisation n'est pas supportée par votre navigateur.");
+            }
+        }
+
+        function showPosition(position) {
+            fetch(`https://geocode.maps.co/reverse?lat=${position.coords.latitude}&lon=${position.coords.longitude}`)
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById("city").value = data.address.city || "";
+                document.getElementById("region").value = data.address.state || "";
+                document.getElementById("country").value = data.address.country || "";
+            })
+            .catch(() => alert("Impossible d'obtenir votre position."));
+        }
+
+        function showError(error) {
+            alert("Erreur de localisation : " + error.message);
+        }
+    </script>
+
 </body>
 </html>

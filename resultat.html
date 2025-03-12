@@ -17,25 +17,34 @@
             align-items: center;
         }
         header {
-            width: 100%;
-            background-color: #121a2f;
-            padding: 15px 0;
-            text-align: center;
-        }
-        nav {
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: #121a2f;
             flex-wrap: wrap;
-            gap: 15px;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+            padding: 0;
         }
         nav a {
-            color: white;
+            color: #fff;
             text-decoration: none;
-            font-size: 18px;
-            transition: color 0.3s;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
         }
         nav a:hover {
-            color: #00509e;
+            background-color: #00509e;
+            transform: scale(1.1);
+        }
+        .hero {
+            text-align: center;
+            padding: 50px;
+            background: linear-gradient(to right, #001f3f, #00509e);
         }
         main {
             text-align: center;
@@ -89,13 +98,18 @@
 </head>
 <body>
     <header>
+        <h1>CRUSIX</h1>
         <nav>
-            <a href="index.html">Accueil</a>
-            <li><a href="annonce.html">Annonce Event</a></li>
-            <a href="equipe.html">Équipe</a>
-            <a href="giveaway.html">Giveaways</a>
-            <a href="contact.html">Contact</a>
+            <ul>
+                <li><a href="index.html" class="lang" data-fr="Accueil" data-en="Home">Accueil</a></li>
+                <li><a href="annonce.html" class="lang" data-fr="Annonce Event" data-en="Event Announcements">Annonce Event</a></li>
+                <li><a href="equipe.html" class="lang" data-fr="Équipe" data-en="Team">Équipe</a></li>
+                <li><a href="giveaway.html" class="lang" data-fr="Giveaways" data-en="Giveaways">Giveaways</a></li>
+                <li><a href="resultat.html" class="lang" data-fr="Résultat GiveAway" data-en="Giveaway Results">Résultat GiveAway</a></li>
+                <li><a href="contact.html" class="lang" data-fr="Contact" data-en="Contact">Contact</a></li>
+            </ul>
         </nav>
+        <button class="translate-btn" onclick="toggleLanguage()">🇫🇷 / 🇬🇧</button>
     </header>
     <main>
         <section class="giveaway-results">

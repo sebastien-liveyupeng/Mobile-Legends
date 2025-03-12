@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CRUSIX - Accueil</title>
-   
     <style>
         body {
             background-color: #0a0f1e;
@@ -19,11 +18,13 @@
             align-items: center;
             padding: 20px;
             background-color: #121a2f;
+            flex-wrap: wrap;
         }
         nav ul {
             list-style: none;
             display: flex;
             gap: 20px;
+            padding: 0;
         }
         nav a {
             color: #fff;
@@ -52,22 +53,34 @@
             flex-wrap: wrap;
         }
         .player-card {
-    background-color: #121a2f;
-    padding: 30px; /* Augmente l'espace intérieur */
-    border-radius: 10px;
-    text-align: center;
-    width: 300px; /* Augmente la largeur */
-}
-
-.player-card img {
-    width: 300px; /* Augmente la taille de l'image */
-    height: 200px;
-    border-radius: 50%;
-}
-@media (max-width: 768px) {
+            background-color: #121a2f;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            width: 250px;
+        }
+        .player-card img {
+            width: 250px;
+            height: 200px;
+            border-radius: 50%;
+        }
+        .translate-btn {
+            background-color: #00509e;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        .translate-btn:hover {
+            background-color: #003f7f;
+        }
+        @media (max-width: 768px) {
             header {
                 flex-direction: column;
                 align-items: center;
+                text-align: center;
             }
             nav ul {
                 flex-direction: column;
@@ -76,8 +89,14 @@
             .hero {
                 padding: 30px;
             }
+            .player-card {
+                width: 90%;
+            }
+            .player-card img {
+                width: 90%;
+                height: auto;
+            }
         }
-
     </style>
 </head>
 <body>
@@ -85,47 +104,66 @@
         <h1>CRUSIX</h1>
         <nav>
             <ul>
-                <li><a href="index.html">Accueil</a></li>
-                <li><a href="annonce.html">Annonce Event</a></li>
-                <li><a href="equipe.html">Équipe</a></li>
-                <li><a href="giveaway.html">Giveaways</a></li>
-                <a href="resultat.html">Resultat GiveAway</a>
-                <li><a href="contact.html">Contact</a></li>
+                <li><a href="index.html" class="lang" data-fr="Accueil" data-en="Home">Accueil</a></li>
+                <li><a href="annonce.html" class="lang" data-fr="Annonce Event" data-en="Event Announcements">Annonce Event</a></li>
+                <li><a href="equipe.html" class="lang" data-fr="Équipe" data-en="Team">Équipe</a></li>
+                <li><a href="giveaway.html" class="lang" data-fr="Giveaways" data-en="Giveaways">Giveaways</a></li>
+                <li><a href="resultat.html" class="lang" data-fr="Résultat GiveAway" data-en="Giveaway Results">Résultat GiveAway</a></li>
+                <li><a href="contact.html" class="lang" data-fr="Contact" data-en="Contact">Contact</a></li>
             </ul>
         </nav>
+        <button class="translate-btn" onclick="toggleLanguage()">🇫🇷 / 🇬🇧</button>
     </header>
     
     <section class="hero">
-        <h2>Bienvenue sur CRUSIX</h2>
-        <p>La team Mobile Legends: Bang Bang ultime !</p>
+        <h2 class="lang" data-fr="Bienvenue sur CRUSIX" data-en="Welcome to CRUSIX">Bienvenue sur CRUSIX</h2>
+        <p class="lang" data-fr="La team Mobile Legends: Bang Bang ultime !" data-en="The ultimate Mobile Legends: Bang Bang team!">La team Mobile Legends: Bang Bang ultime !</p>
     </section>
 
     <section id="equipe" class="team">
-        <h2>Notre Équipe</h2>
+        <h2 class="lang" data-fr="Notre Équipe" data-en="Our Team">Notre Équipe</h2>
         <div class="team-container">
             <div class="player-card">
                 <img src="img/Akane.jpg" alt="Joueur 1">
                 <h3>Akane</h3>
-                <p>Membre</p>
+                <p class="lang" data-fr="Membre" data-en="Member">Membre</p>
             </div>
             <div class="player-card">
                 <img src="img/Jard.jpg" alt="Joueur 2">
                 <h3>Jard</h3>
-                <p>Membre</p>
+                <p class="lang" data-fr="Membre" data-en="Member">Membre</p>
             </div>
             <div class="player-card">
                 <img src="img/l1lium.jpg" alt="Joueur 3">
                 <h3>l1lium</h3>
-                <p>Membre</p>
+                <p class="lang" data-fr="Membre" data-en="Member">Membre</p>
             </div>
             <div class="player-card">
-                <img src="img/moi.gif" alt="Joueur 3">
+                <img src="img/moi.gif" alt="Joueur 4">
                 <h3>Azra</h3>
-                <p>Leader</p>
+                <p class="lang" data-fr="Leader" data-en="Leader">Leader</p>
             </div>
         </div>
     </section>
 
-    <script src="script.js"></script>
+    <script>
+        function toggleLanguage() {
+            let currentLang = localStorage.getItem('lang') || 'fr';
+            let newLang = currentLang === 'fr' ? 'en' : 'fr';
+            localStorage.setItem('lang', newLang);
+            translatePage(newLang);
+        }
+
+        function translatePage(lang) {
+            document.querySelectorAll('.lang').forEach(element => {
+                element.textContent = element.getAttribute(`data-${lang}`);
+            });
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            let savedLang = localStorage.getItem('lang') || 'fr';
+            translatePage(savedLang);
+        });
+    </script>
 </body>
 </html>

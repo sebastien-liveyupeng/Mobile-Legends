@@ -12,17 +12,20 @@
             margin: 0;
             padding: 0;
         }
+
         header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 20px;
             background-color: #121a2f;
+            flex-wrap: wrap;
         }
         nav ul {
             list-style: none;
             display: flex;
             gap: 20px;
+            padding: 0;
         }
         nav a {
             color: #fff;
@@ -35,24 +38,77 @@
             background-color: #00509e;
             transform: scale(1.1);
         }
-        .annonces {
+        .hero {
             text-align: center;
             padding: 50px;
+            background: linear-gradient(to right, #001f3f, #00509e);
         }
-        .annonce {
+
+        /* Menu burger pour mobile */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5em;
+            cursor: pointer;
+        }
+
+        .announcements {
+            text-align: center;
+            padding: 100px 20px 50px;
+        }
+
+        .announcement-card {
             background-color: #1e2a47;
             padding: 20px;
             border-radius: 10px;
-            margin: 20px auto;
-            max-width: 800px;
+            margin-bottom: 20px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
-        @media (max-width: 600px) {
-            nav ul {
-                flex-direction: column;
+
+        .translate-btn {
+            background-color: #00509e;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .translate-btn:hover {
+            background-color: #003f7f;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: row;
+                justify-content: space-between;
                 align-items: center;
             }
-            .annonce {
-                padding: 15px;
+
+            nav ul {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                right: 10px;
+                background-color: #121a2f;
+                padding: 10px;
+                border-radius: 5px;
+                width: 150px;
+            }
+
+            nav ul.open {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: block;
             }
         }
     </style>
@@ -62,26 +118,47 @@
         <h1>CRUSIX</h1>
         <nav>
             <ul>
-                <li><a href="index.html">Accueil</a></li>
-                <li><a href="equipe.html">Équipe</a></li>
-                <li><a href="giveaway.html">Giveaways</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="annonces.html">Annonces</a></li>
+                <li><a href="index.html" class="lang" data-fr="Accueil" data-en="Home">Accueil</a></li>
+                <li><a href="annonce.html" class="lang" data-fr="Annonce Event" data-en="Event Announcements">Annonce Event</a></li>
+                <li><a href="equipe.html" class="lang" data-fr="Équipe" data-en="Team">Équipe</a></li>
+                <li><a href="giveaway.html" class="lang" data-fr="Giveaways" data-en="Giveaways">Giveaways</a></li>
+                <li><a href="resultat.html" class="lang" data-fr="Résultat GiveAway" data-en="Giveaway Results">Résultat GiveAway</a></li>
+                <li><a href="contact.html" class="lang" data-fr="Contact" data-en="Contact">Contact</a></li>
             </ul>
         </nav>
+        <button class="translate-btn" onclick="toggleLanguage()">🇫🇷 / 🇬🇧</button>
     </header>
     
-    <section class="annonces">
-        <h2>Événements et Annonces</h2>
-        <div class="annonce">
-            <h3>Aucun event pour le moment , revenez plus tard .</h3>
-            <p></p>
-            <p></p>
-        </div>
-        <div class="annonce">
-            <h3>Recrutement de nouveaux joueurs</h3>
-            <p>Nous recherchons des joueurs motivés pour rejoindre la team CRUSIX.</p>
+    <section class="announcements">
+        <h2 class="lang" data-fr="Annonces de la Team" data-en="Team Announcements">Annonces de la Team</h2>
+        <div class="announcement-card">
+            <h3 class="lang" data-fr="Aucun event pour le moment" data-en="There's no event for the moment">Aucun event pour le moment</h3>
+            <p class="lang" data-fr="Aucun event pour le moment" data-en="There's no event for the moment">Aucun event pour le moment</p>
         </div>
     </section>
+    
+    <script>
+        function toggleLanguage() {
+            let currentLang = localStorage.getItem('lang') || 'fr';
+            let newLang = currentLang === 'fr' ? 'en' : 'fr';
+            localStorage.setItem('lang', newLang);
+            translatePage(newLang);
+        }
+
+        function translatePage(lang) {
+            document.querySelectorAll('.lang').forEach(element => {
+                element.textContent = element.getAttribute(`data-${lang}`);
+            });
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            let savedLang = localStorage.getItem('lang') || 'fr';
+            translatePage(savedLang);
+        });
+
+        function toggleMenu() {
+            document.querySelector('nav ul').classList.toggle('open');
+        }
+    </script>
 </body>
 </html>

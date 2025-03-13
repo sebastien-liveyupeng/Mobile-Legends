@@ -40,20 +40,6 @@
             background-color: #00509e;
             transform: scale(1.1);
         }
-        .hero {
-            text-align: center;
-            padding: 50px;
-            background: linear-gradient(to right, #001f3f, #00509e);
-        }
-        /* Hero Section */
-        .hero {
-            text-align: center;
-            padding: 60px 20px;
-            background: linear-gradient(to right, #001f3f, #00509e);
-            border-radius: 10px;
-            margin: 20px;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
-        }
 
         /* Traduction */
         .translate-btn {
@@ -71,6 +57,16 @@
             background-color: #003f7f;
         }
 
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(to right, #001f3f, #00509e);
+            border-radius: 10px;
+            margin: 20px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+        }
+
         /* Définition de l'Équipe */
         .team-definition {
             margin: 40px 20px;
@@ -79,6 +75,42 @@
             border-radius: 10px;
             text-align: center;
             box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Gameplays */
+        .gameplay-section {
+            text-align: center;
+            margin: 40px 20px;
+            padding: 20px;
+            background-color: #1e2a47;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .gameplay-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .gameplay {
+            width: 100%;
+            max-width: 560px;
+        }
+
+        .gameplay iframe {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 16 / 9;
+            border-radius: 10px;
+        }
+
+        .gameplay p {
+            text-align: center;
+            color: white;
+            font-size: 1.2em;
         }
 
         /* Responsive */
@@ -115,7 +147,7 @@
                 <li><a href="contact.html" class="lang" data-fr="Contact" data-en="Contact">Contact</a></li>
             </ul>
         </nav>
-        <button class="translate-btn" onclick="toggleLanguage()">🇫🇷 / 🇬🇧</button>
+        <button class="translate-btn" onclick="translatePage()">🇫🇷 / 🇬🇧</button>
     </header>
     
     <section class="hero">
@@ -127,30 +159,38 @@
         <h2 id="team-title">Définition de l'Équipe</h2>
         <p id="team-text">
             CRUSIX est bien plus qu'une simple équipe, c'est une communauté de joueurs passionnés par Mobile Legends: Bang Bang. 
-            Nous nous engageons à repousser nos limites, à évoluer ensemble et à viser l'excellence dans chaque partie. 
-            Notre équipe repose sur la synergie, la stratégie et un esprit de compétition inébranlable. 
-            C'est une team avec des joueurs venant du monde entier comme des membres venant de Madagascar, Philippines, France et bien plus encore si tu nous rejoins !!
+            Nous nous engageons à repousser nos limites, à évoluer ensemble et à viser l'excellence dans chaque partie.
         </p>
     </section>
 
+    <section class="gameplay-section">
+        <h2>Gameplays</h2>
+        <div class="gameplay-container">
+            <div class="gameplay">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/dWLfcNL4B9A?si=MOG8r9vVplAMlOXN" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                <p>Joueur : <strong>Azra</strong></p>
+            </div>
+        </div>
+    </section>
+    
     <script>
         let isFrench = true;
 
         function translatePage() {
-            if (isFrench) {
-                document.getElementById("hero-title").innerText = "Welcome to CRUSIX";
-                document.getElementById("hero-text").innerText = "The ultimate Mobile Legends: Bang Bang team!";
-                document.getElementById("team-title").innerText = "Team Definition";
-                document.getElementById("team-text").innerText = "CRUSIX is more than just a team, it is a community of passionate Mobile Legends: Bang Bang players. We are committed to pushing our limits, evolving together, and striving for excellence in every match. Our team is built on synergy, strategy, and an unwavering competitive spirit. We have members from around the world, including Madagascar, the Philippines, France, and many more. Join us!";
-                document.querySelector(".translate-btn").innerText = "🇫🇷 Français";
-            } else {
-                document.getElementById("hero-title").innerText = "Bienvenue sur CRUSIX";
-                document.getElementById("hero-text").innerText = "La team Mobile Legends: Bang Bang ultime !";
-                document.getElementById("team-title").innerText = "Définition de l'Équipe";
-                document.getElementById("team-text").innerText = "CRUSIX est bien plus qu'une simple équipe, c'est une communauté de joueurs passionnés par Mobile Legends: Bang Bang. Nous nous engageons à repousser nos limites, à évoluer ensemble et à viser l'excellence dans chaque partie. Notre équipe repose sur la synergie, la stratégie et un esprit de compétition inébranlable. C'est une team avec des joueurs venant du monde entier comme des membres venant de Madagascar, Philippines, France et bien plus encore si tu nous rejoins !!";
-                document.querySelector(".translate-btn").innerText = "🇬🇧 English";
-            }
             isFrench = !isFrench;
+
+            document.getElementById("hero-title").innerText = isFrench ? "Bienvenue sur CRUSIX" : "Welcome to CRUSIX";
+            document.getElementById("hero-text").innerText = isFrench ? "La team Mobile Legends: Bang Bang ultime !" : "The ultimate Mobile Legends: Bang Bang team!";
+            document.getElementById("team-title").innerText = isFrench ? "Qui nous sommes ?" : "Who are we ?";
+            document.getElementById("team-text").innerText = isFrench 
+                ? "CRUSIX, c’est plus qu’une simple équipe, c’est une communauté de passionnés de Mobile Legends : les joueurs de Bang Bang. Nous nous engageons à repousser nos limites, à évoluer ensemble et à viser l’excellence à chaque match. Notre équipe est bâtie sur la synergie, la stratégie et un esprit de compétition inébranlable. Nous avons des membres du monde entier, notamment de Madagascar, des Philippines, de la France et bien d’autres. Rejoignez-nous !"
+                : "CRUSIX is more than just a team, it is a community of passionate Mobile Legends: Bang Bang players. We are committed to pushing our limits, evolving together, and striving for excellence in every match. Our team is built on synergy, strategy, and an unwavering competitive spirit. We have members from around the world, including Madagascar, the Philippines, France, and many more. Join us!";
+
+            document.querySelectorAll(".lang").forEach(el => {
+                el.innerText = isFrench ? el.dataset.fr : el.dataset.en;
+            });
+
+            document.querySelector(".translate-btn").innerText = isFrench ? "🇬🇧 English" : "🇫🇷 Français";
         }
     </script>
 </body>

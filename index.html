@@ -6,135 +6,137 @@
     <title>CRUSIX - Accueil</title>
     
     <style>
-        body {
-            background-color: #0a0f1e;
-            color: #fff;
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
+      body {
+    background-color: #0a0f1e;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
 
-        /* Header */
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px;
-            background-color: #121a2f;
-            flex-wrap: wrap;
-        }
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 20px;
-            padding: 0;
-        }
-        nav a {
-            color: #fff;
-            text-decoration: none;
-            padding: 10px 15px;
-            border-radius: 5px;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-        }
-        nav a:hover {
-            background-color: #00509e;
-            transform: scale(1.1);
-        }
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #121a2f;
+    flex-wrap: wrap;
+}
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    padding: 0;
+    margin: 0;
+}
+nav a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+nav a:hover {
+    background-color: #00509e;
+    transform: scale(1.1);
+}
 
-        /* Traduction */
-        .translate-btn {
-            background-color: #00509e;
-            color: white;
-            border: none;
-            padding: 10px 15px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-            transition: 0.3s;
-        }
+/* Traduction */
+.translate-btn {
+    background-color: #00509e;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.3s;
+}
+.translate-btn:hover {
+    background-color: #003f7f;
+}
 
-        .translate-btn:hover {
-            background-color: #003f7f;
-        }
+/* Hero Section */
+.hero {
+    text-align: center;
+    padding: 60px 20px;
+    background: linear-gradient(to right, #001f3f, #00509e);
+    border-radius: 10px;
+    margin: 20px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+}
 
-        /* Hero Section */
-        .hero {
-            text-align: center;
-            padding: 60px 20px;
-            background: linear-gradient(to right, #001f3f, #00509e);
-            border-radius: 10px;
-            margin: 20px;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
-        }
+/* Sections */
+.team-definition, .gameplay-section {
+    margin: 40px 20px;
+    padding: 20px;
+    background-color: #1e2a47;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+}
 
-        /* Définition de l'Équipe */
-        .team-definition {
-            margin: 40px 20px;
-            padding: 20px;
-            background-color: #1e2a47;
-            border-radius: 10px;
-            text-align: center;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
-        }
+/* Gameplays */
+.gameplay-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+}
 
-        /* Gameplays */
-        .gameplay-section {
-            text-align: center;
-            margin: 40px 20px;
-            padding: 20px;
-            background-color: #1e2a47;
-            border-radius: 10px;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
-        }
+.gameplay {
+    width: 100%;
+    max-width: 560px;
+}
+.gameplay iframe {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    border-radius: 10px;
+}
 
-        .gameplay-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 20px;
-            padding: 20px;
-        }
+/* Video Background */
+.video-background {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+}
 
-        .gameplay {
-            width: 100%;
-            max-width: 560px;
-        }
+/* Responsive */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+    .hero {
+        padding: 40px;
+    }
+    .video-background {
+        width: 100%;
+        height: 100%;
+    }
+}
 
-        .gameplay iframe {
-            width: 100%;
-            height: auto;
-            aspect-ratio: 16 / 9;
-            border-radius: 10px;
-        }
-
-        .gameplay p {
-            text-align: center;
-            color: white;
-            font-size: 1.2em;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            header {
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-            }
-
-            nav ul {
-                flex-direction: column;
-                align-items: center;
-                gap: 30px;
-            }
-
-            .hero {
-                padding: 40px;
-            }
-        }
     </style>
 </head>
 
 <body>
+    <video autoplay muted loop class="video-background">
+        <source src="img/KOfGUSION.mp4" type="video/mp4">
+    </video>
     <header>
         <h1>CRUSIX</h1>
         <nav>
@@ -158,8 +160,7 @@
     <section class="team-definition">
         <h2 id="team-title">Définition de l'Équipe</h2>
         <p id="team-text">
-            CRUSIX est bien plus qu'une simple équipe, c'est une communauté de joueurs passionnés par Mobile Legends: Bang Bang. 
-            Nous nous engageons à repousser nos limites, à évoluer ensemble et à viser l'excellence dans chaque partie.
+            CRUSIX, c’est plus qu’une simple équipe, c’est une communauté de passionnés de Mobile Legends : les joueurs de Bang Bang. Nous nous engageons à repousser nos limites, à évoluer ensemble et à viser l’excellence à chaque match. Notre équipe est bâtie sur la synergie, la stratégie et un esprit de compétition inébranlable. Nous avons des membres du monde entier, notamment de Madagascar, des Philippines, de la France et bien d’autres. Rejoignez-nous !
         </p>
     </section>
 

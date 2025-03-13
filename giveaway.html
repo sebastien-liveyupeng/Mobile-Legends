@@ -70,7 +70,7 @@
         textarea {
             height: 100px;
         }
-        .translate-btn {
+        .translate-btn, button {
             background-color: #00509e;
             color: white;
             border: none;
@@ -78,24 +78,11 @@
             border-radius: 5px;
             cursor: pointer;
             transition: background 0.3s ease, transform 0.2s;
-            margin-right: 20px;
-        }
-        .translate-btn:hover {
-            background-color: #003f7f;
-            transform: scale(1.1);
-        }
-        button {
-            background-color: #00509e;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background 0.3s ease;
             margin-top: 10px;
         }
-        button:hover {
+        .translate-btn:hover, button:hover {
             background-color: #003f7f;
+            transform: scale(1.1);
         }
         /* Responsive */
         @media (max-width: 768px) {
@@ -122,7 +109,6 @@
     </style>
 </head>
 <body>
-    <!-- Header identique à la page d'accueil -->
     <header>
         <h1>CRUSIX</h1>
         <nav>
@@ -138,30 +124,31 @@
         <button class="translate-btn" onclick="toggleLanguage()">🇫🇷 / 🇬🇧</button>
     </header>
 
-    <!-- Section Hero -->
     <section class="hero">
         <h2 class="lang" data-fr="GiveAway Inscription" data-en="Giveaway Registration">GiveAway Inscription</h2>
         <p class="lang" data-fr="Inscrivez-vous pour participer au giveaway !" data-en="Sign up to participate in the giveaway!">Inscrivez-vous pour participer au giveaway !</p>
     </section>
 
-    <!-- Formulaire de Contact -->
     <section class="contact-form">
-        <h2>Inscription au GiveAway</h2>
+        <h2 class="lang" data-fr="Inscription au GiveAway" data-en="Giveaway Registration">Inscription au GiveAway</h2>
         <form action="https://formspree.io/f/maneykzy" method="POST">
-            <label>Votre Email:
-                <input type="email" name="email" required>
-            </label>
-            <label>Game name:
-                <textarea name="message"></textarea>
-            </label>
-            <label for="city">Ville :</label>
+            <label class="lang" data-fr="Votre Email :" data-en="Your Email:">Votre Email :</label>
+            <input type="email" name="email" required>
+
+            <label class="lang" data-fr="Nom en jeu :" data-en="Game name:">Nom en jeu :</label>
+            <textarea name="message"></textarea>
+
+            <label class="lang" data-fr="Ville :" data-en="City:">Ville :</label>
             <input type="text" id="city" name="city">
-            <label for="region">Région :</label>
+
+            <label class="lang" data-fr="Région :" data-en="Region:">Région :</label>
             <input type="text" id="region" name="region">
-            <label for="country">Pays :</label>
+
+            <label class="lang" data-fr="Pays :" data-en="Country:">Pays :</label>
             <input type="text" id="country" name="country">
-            <button type="button" onclick="getLocation()">Utiliser ma position</button>
-            <button type="submit">Envoyer</button>
+
+            <button type="button" class="lang" data-fr="Utiliser ma position" data-en="Use my location" onclick="getLocation()">Utiliser ma position</button>
+            <button type="submit" class="lang" data-fr="Envoyer" data-en="Send">Envoyer</button>
         </form>
     </section>
 
@@ -183,6 +170,25 @@
             let savedLang = localStorage.getItem('lang') || 'fr';
             translatePage(savedLang);
         });
+
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            } else {
+                alert("La géolocalisation n'est pas supportée par votre navigateur.");
+            }
+        }
+
+        function showPosition(position) {
+            fetch(`https://geocode.maps.co/reverse?lat=${position.coords.latitude}&lon=${position.coords.longitude}&api_key=YOUR_API_KEY`)
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById("city").value = data.address.city || "";
+                document.getElementById("region").value = data.address.state || "";
+                document.getElementById("country").value = data.address.country || "";
+            })
+            .catch(error => console.error('Erreur:', error));
+        }
     </script>
 </body>
 </html>

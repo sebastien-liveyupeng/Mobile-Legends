@@ -20,15 +20,27 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px;
+            padding: 15px 20px;
             background-color: #121a2f;
+            width: 100%;
             flex-wrap: wrap;
+            position: relative;
+        }
+        h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        nav {
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
         }
         nav ul {
             list-style: none;
             display: flex;
             gap: 20px;
             padding: 0;
+            margin: 0;
         }
         nav a {
             color: #fff;
@@ -39,6 +51,20 @@
         }
         nav a:hover {
             background-color: #00509e;
+            transform: scale(1.1);
+        }
+        .translate-btn {
+            background-color: #00509e;
+            color: #fff;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        .translate-btn:hover {
+            background-color: #003366;
             transform: scale(1.1);
         }
         .hero {
@@ -72,26 +98,19 @@
             padding: 10px;
             text-align: center;
         }
-        @media (max-width: 600px) {
-            .giveaway-results table {
-                font-size: 14px;
-            }
-            nav {
-                flex-direction: column;
-                align-items: center;
-            }
-        }
         @media (max-width: 768px) {
             header {
                 flex-direction: column;
                 align-items: center;
+                text-align: center;
             }
             nav ul {
                 flex-direction: column;
                 text-align: center;
+                padding: 10px 0;
             }
-            .hero {
-                padding: 30px;
+            .translate-btn {
+                margin-top: 10px;
             }
         }
     </style>
@@ -113,25 +132,36 @@
     </header>
     <main>
         <section class="giveaway-results">
-            <h2>Résultats des Giveaways</h2>
+            <h2 class="lang" data-fr="Résultats des Giveaways" data-en="Giveaway Results">Résultats des Giveaways</h2>
             <table>
                 <tr>
-                    <th>Date</th>
-                    <th>Nom du Giveaway</th>
-                    <th>Gagnant</th>
+                    <th class="lang" data-fr="Date" data-en="Date">Date</th>
+                    <th class="lang" data-fr="Nom du Giveaway" data-en="Giveaway Name">Nom du Giveaway</th>
+                    <th class="lang" data-fr="Gagnant" data-en="Winner">Gagnant</th>
                 </tr>
                 <tr>
                     <td></td>
-                    <td></td>
+                    <td class="lang" data-fr="" data-en=""></td>
                     <td></td>
                 </tr>
                 <tr>
                     <td></td>
-                    <td></td>
+                    <td class="lang" data-fr="" data-en=""></td>
                     <td></td>
                 </tr>
             </table>
         </section>
     </main>
+    <script>
+        function toggleLanguage() {
+            const elements = document.querySelectorAll('.lang');
+            const isFrench = document.documentElement.lang === "fr";
+            document.documentElement.lang = isFrench ? "en" : "fr";
+
+            elements.forEach(el => {
+                el.textContent = isFrench ? el.getAttribute("data-en") : el.getAttribute("data-fr");
+            });
+        }
+    </script>
 </body>
 </html>

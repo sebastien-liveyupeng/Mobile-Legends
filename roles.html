@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUSIX - Accueil</title>
+  <link rel="stylesheet" href="roles.css">
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+body {
+    background-color: #0a0f1e;
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* --- HEADER --- */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: rgba(18, 26, 47, 0.9);
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 2;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    padding: 0;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    font-weight: 500;
+}
+
+nav a:hover {
+    background-color: #00509e;
+    transform: scale(1.1);
+}
+
+/* --- HERO SECTION --- */
+.hero {
+    text-align: center;
+    padding: 70px 20px;
+    background: linear-gradient(to right, #001f3f, #00509e);
+}
+
+.hero h2 {
+    font-size: 2.5em;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 0px 0px 10px rgba(0, 80, 158, 0.7);
+}
+
+/* --- TEAM SECTION --- */
+.team {
+    text-align: center;
+    padding: 50px 20px;
+}
+
+.team-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.player-card {
+    background-color: rgba(18, 26, 47, 0.9);
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+    width: 250px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.player-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 0px 15px rgba(0, 80, 158, 0.5);
+}
+
+.player-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 50%;
+    border: 3px solid #00509e;
+}
+
+/* --- BOUTON TRADUCTION --- */
+.translate-btn {
+    background-color: #00509e;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+    font-weight: 600;
+}
+
+.translate-btn:hover {
+    background-color: #003f7f;
+    transform: scale(1.1);
+}
+
+/* --- BACKGROUND VIDEO --- */
+.video-background {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    filter: brightness(50%);
+}
+.video-background {
+    pointer-events: none;
+    user-select: none;
+}
+/* --- RESPONSIVE --- */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 15px;
+    }
+
+    nav ul {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+
+    .hero h2 {
+        font-size: 2em;
+    }
+
+    .player-card {
+        width: 90%;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <video autoplay muted loop playsinline class="video-background">
+        <source src="img/KOfGUSION.mp4" type="video/mp4">
+    </video>
+    <header>
+        <h1>CRUSIX</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html" class="lang" data-fr="Accueil" data-en="Home">Accueil</a></li>
+                <li><a href="annonce.html" class="lang" data-fr="Annonce Event" data-en="Event Announcements">Annonce Event</a></li>
+                <li><a href="equipe.html" class="lang" data-fr="Équipe" data-en="Team">Équipe</a></li>
+                <li><a href="giveaway.html" class="lang" data-fr="Giveaways" data-en="Giveaways">Giveaways</a></li>
+                <li><a href="resultat.html" class="lang" data-fr="Résultat GiveAway" data-en="Giveaway Results">Résultat GiveAway</a></li>
+                <li><a href="contact.html" class="lang" data-fr="Contact" data-en="Contact">Contact</a></li>
+            </ul>
+        </nav>
+        <button class="translate-btn" onclick="toggleLanguage()">🇫🇷 / 🇬🇧</button>
+    </header>
+        <section>
+            <h1>Bienvenue sur la page de sélection des rôles que vous jouez, il serait important de choisir vos rôles pour mieux savoir sur quels aspects vous concentrer.</h1>
+        </section>
+
+        <section class="role-form">
+        <h2 class="lang" data-fr="Veuillez choisir deux lanes " data-en="Please Chose two lane"> Veuillez choisir au maximum 2 roles:</h2>
+        <form action="https://formspree.io/f/mldlwooe" method="POST">
+            <label for="name" class="lang" data-fr="Pseudo" data-en="Pseudo">Pseudo in game</label>
+            <input type="text" id="name" name="name" required>
+
+           
+
+            <label for="role" class="lang" data-fr="Rôle" data-en="Role">Rôle</label>
+            <select id="role" name="role">
+                <option value="" disabled selected class="lang" data-fr="Sélectionnez un rôle" data-en="Select a role">Sélectionnez un rôle</option>
+                <option value="Support">Support</option>
+                <option value="Tank">Tank</option>
+                <option value="Tireur">Tireur</option>
+                <option value="Mage">Mage</option>
+                <option value="Jungler">Jungler</option>
+            </select>
+              <select id="role" name="role">
+                <option value="" disabled selected class="lang" data-fr="Sélectionnez un rôle" data-en="Select a role">Sélectionnez un rôle</option>
+                <option value="Support">Support</option>
+                <option value="Tank">Tank</option>
+                <option value="Tireur">Tireur</option>
+                <option value="Mage">Mage</option>
+                <option value="Jungler">Jungler</option>
+            </select>
+
+            <button type="submit" class="translate-btn lang" data-fr="S'inscrire" data-en="Sign Up">S'inscrire</button>
+        </form>
+    </section>
+
+    <script>
+        function toggleLanguage() {
+            let currentLang = localStorage.getItem('lang') || 'fr';
+            let newLang = currentLang === 'fr' ? 'en' : 'fr';
+            localStorage.setItem('lang', newLang);
+            translatePage(newLang);
+        }
+
+        function translatePage(lang) {
+            document.querySelectorAll('.lang').forEach(element => {
+                element.textContent = element.getAttribute(`data-${lang}`);
+            });
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            let savedLang = localStorage.getItem('lang') || 'fr';
+            translatePage(savedLang);
+        });
+    </script>
+</body>
+</html>
